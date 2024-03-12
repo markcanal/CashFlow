@@ -76,6 +76,7 @@ dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.hilt.navigation)
+    implementation(libs.google.font)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.jakewarthon.timber)
