@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.moneymaker.cashflow.bussiness.data.source.localservice.entities.IncomeEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface IncomeDao {
@@ -14,7 +15,7 @@ interface IncomeDao {
     suspend fun insertIncome(incomeEntity: IncomeEntity)
 
     @Query("SELECT * FROM INCOME_TABLE")
-    fun getAllIncome(): List<IncomeEntity>
+    fun getAllIncome(): Flow<List<IncomeEntity>>
 
     @Update
     suspend fun updateIncomeDetails(incomeEntity: IncomeEntity)

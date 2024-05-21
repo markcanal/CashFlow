@@ -8,7 +8,6 @@ import com.moneymaker.cashflow.core.constants.ApplicationConstants.EXPENSE_TABLE
 import com.moneymaker.cashflow.core.constants.ExpensesConstants.EXPENSE_AMOUNT
 import com.moneymaker.cashflow.core.constants.ExpensesConstants.EXPENSE_DATE
 import com.moneymaker.cashflow.core.constants.ExpensesConstants.EXPENSE_DESCRIPTION
-import com.moneymaker.cashflow.core.constants.ExpensesConstants.EXPENSE_TRANS_ID
 import com.moneymaker.cashflow.core.constants.ExpensesConstants.EXPENSE_TYPE
 import kotlinx.parcelize.Parcelize
 
@@ -16,7 +15,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ExpensesEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = EXPENSE_TRANS_ID) val transId: Int,
+    val transId: Int = 0,
     @ColumnInfo(name = EXPENSE_AMOUNT) val amount: Double,
     @ColumnInfo(name = EXPENSE_DESCRIPTION) val description: String,
     @ColumnInfo(name = EXPENSE_DATE) val date: String,
