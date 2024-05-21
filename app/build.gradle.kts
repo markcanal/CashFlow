@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.hiltDagger)
     alias(libs.plugins.kotlinParcelize)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -20,6 +21,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
         }
     }
 
@@ -40,7 +44,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
     packaging {
         resources {
@@ -73,14 +77,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Room
+    implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 
     // Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-}
-
-kapt {
-    correctErrorTypes = true
+    ksp(libs.hilt.android.compiler)
 }
